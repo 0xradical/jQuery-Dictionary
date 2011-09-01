@@ -12,6 +12,40 @@ h3	{
 	font-size: 100%;
 }
 
+ol, ul {
+    list-style: none outside none;
+}
+
+ul.signatures {
+    background: none repeat scroll 0 0 #eeeeee;
+    margin: 1em 19px 1.5em;
+    padding: 10px;
+}
+
+ul.signatures p.arguement strong {
+    margin-right: 5px;
+}
+
+
+li.signature {
+    margin: 0 0 1.5em;
+}
+
+.signatures h4 {
+    margin: 0.2em 0 0;
+}
+
+h4.name {
+    border-bottom: 1px solid #b1b1b1;
+    padding: 0 0 2px;
+    font-size: 120%;
+}
+
+.versionAdded {
+    float: right;
+    font-size: 80%;
+}
+
 pre {
     background-color: #FBF9EA;
     border: 1px solid #E2E1D5;
