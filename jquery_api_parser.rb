@@ -1,8 +1,5 @@
 require "nokogiri"
-require "htmlentities"
 require "yaml"
-
-coder = HTMLEntities.new
 
 builder = Nokogiri::XML::Builder.new(:encoding => "UTF-8") do |xml|
   xml.dictionary("xmlns"   => "http://www.w3.org/1999/xhtml", 
@@ -11,7 +8,7 @@ builder = Nokogiri::XML::Builder.new(:encoding => "UTF-8") do |xml|
     xml.parent.namespace = $namespace_definitions[1]
 
     Dir["jquery_api/*/entry.html"].each_with_index do |entry_file,entry_index|
-      html = Nokogiri::HTML(File.open(entry_file))
+      html = Nokogiri::HTML(File.open(entry_file),nil,'utf-8')
             
       entry_name   = html.xpath('//div[@class="entry-content"]/div[1]/h1/text()').first.to_s
       
