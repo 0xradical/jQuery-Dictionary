@@ -1,5 +1,4 @@
 require "nokogiri"
-require "yaml"
 
 builder = Nokogiri::XML::Builder.new(:encoding => "UTF-8") do |xml|
   xml.dictionary("xmlns"   => "http://www.w3.org/1999/xhtml", 

@@ -1,5 +1,4 @@
 require "mechanize"
-require "yaml"
 
 unless File.exists?("jquery_api")
   FileUtils.mkdir("jquery_api")
