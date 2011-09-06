@@ -27,10 +27,10 @@ builder = Nokogiri::XML::Builder.new(:encoding => "UTF-8") do |xml|
           signatures_names << signature_name
         end
 
-        xml['d'].entry("id" => "#{formatted_name}_#{entry_index}_#{entry_css_index}", "d:title" => "#{entry_name}", "d:value" => "#{entry_name.gsub(".","")}") do
-          xml['d'].index("d:title" => "#{entry_name}","d:value" => "#{entry_name.gsub(".","")}")
+        xml['d'].entry("id" => "#{formatted_name}_#{entry_index}_#{entry_css_index}", "d:title" => "#{entry_name}", "d:value" => "#{entry_name.gsub(/[\.\:]/,"")}") do
+          xml['d'].index("d:title" => "#{entry_name}","d:value" => "#{entry_name.gsub(/[\.\:]/,"")}")
           if entry_name =~ /^jQuery\./
-            xml['d'].index("d:title" => "#{entry_name}","d:value" => "#{entry_name.gsub("jQuery.","").gsub(".","")}")
+            xml['d'].index("d:title" => "#{entry_name}","d:value" => "#{entry_name.gsub("jQuery.","").gsub(/[\.\:]/,"")}")
           end
           signatures_names.each do |signature|
             next if signature == entry_name
