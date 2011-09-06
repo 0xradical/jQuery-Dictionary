@@ -11,11 +11,19 @@ builder = Nokogiri::XML::Builder.new(:encoding => "UTF-8") do |xml|
             
       entry_name   = html.xpath('//div[@class="entry-content"]/div[1]/h1/text()').first.to_s
       
-      entry_css_classes = html.xpath('//div[@class="entry-content"]/div').map{|div| div.attributes["class"].value}.select{|css_class| css_class.split(/\s/).include?("entry")}
+      entry_css_classes = html.xpath('//div[@class="entry-content"]/div').map do |div| 
+        div.attributes["class"].value
+      end.select do |css_class|
+        css_class.split(/\s/).include?("entry")
+      end
       
       entry_css_classes.each_with_index do |entry_css_class,entry_css_index|
-        entry_content = html.xpath('//div[@class="entry-content"]/div[@class="' + entry_css_class + '"][' + (entry_css_index+1).to_s + ']')
-        
+        entry_content = html.xpath('//div[@class="entry-content"]/div[@class="' + 
+                                                                entry_css_class + 
+                                                                          '"][' + 
+                                                       (entry_css_index+1).to_s + 
+                                                                            ']')
+                                                                            
         name            = entry_content.xpath('h2[1]/span[@class="name"]/text()').first.to_s
         formatted_name  = name.downcase.gsub(/[^a-zA-Z0-9]/,"_")
 
@@ -32,9 +40,9 @@ builder = Nokogiri::XML::Builder.new(:encoding => "UTF-8") do |xml|
           if entry_name =~ /^jQuery\./
             xml['d'].index("d:title" => "#{entry_name}","d:value" => "#{entry_name.gsub("jQuery.","").gsub(/[\.\:]/,"")}")
           end
-          signatures_names.each do |signature|
-            next if signature == entry_name
-            xml['d'].index("d:title" => "#{signature}","d:value" => "#{signature.gsub(".","")}")
+          signatures_names.each do |signature_name|
+            next if signature_name == entry_name
+            xml['d'].index("d:title" => "#{signature_name}","d:value" => "#{signature.gsub(".","")}")
           end
           xml.div do
             xml.parent.namespace = $namespace_definitions[0]

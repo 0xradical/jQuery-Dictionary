@@ -1,7 +1,7 @@
 DICT_NAME		=	"jQuery Dictionary"
 DICT_SRC_PATH	=	jQueryDictionary.xml
 CSS_PATH		=	jQueryDictionary.css
-PLIST_PATH		=	jQueryInfo.plist
+PLIST_PATH		=	jQueryDictionaryInfo.plist
 
 DICT_BUILD_OPTS		=
 # Suppress adding supplementary key.
