@@ -1,1 +1,10 @@
-I'll add the jQuery XML later ...
+This is a set of Ruby(1.9) scripts that produce a
+jQuery dictionary for the Dictionary Mac OS app.
+It's nowhere near perfect so be my guest: fork it and
+improve !
+
+* Install the gem `mechanize'
+* Run `jquery_api_scraper.rb'
+* Run `jquery_api_parser.rb'
+* Build the dictionary running `make'
+* Install the dictionary running `make install'
