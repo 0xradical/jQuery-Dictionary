@@ -42,7 +42,7 @@ builder = Nokogiri::XML::Builder.new(:encoding => "UTF-8") do |xml|
           end
           signatures_names.each do |signature_name|
             next if signature_name == entry_name
-            xml['d'].index("d:title" => "#{signature_name}","d:value" => "#{signature.gsub(".","")}")
+            xml['d'].index("d:title" => "#{signature_name}","d:value" => "#{signature_name.gsub(".","")}")
           end
           xml.div do
             xml.parent.namespace = $namespace_definitions[0]
